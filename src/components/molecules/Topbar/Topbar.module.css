@@ -1,0 +1,7 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+.sections > a {
+  margin-left: 24px;
+}
