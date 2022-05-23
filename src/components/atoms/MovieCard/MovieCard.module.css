@@ -1,0 +1,18 @@
+.image {
+  height: 300px;
+  max-height: 300px;
+}
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book {
+  background-color: #64b5f6;
+  color: #fff;
+}
+.book:hover {
+  background-color: #b2dfdb;
+  color: #fff;
+}

@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { useStore } from './index';
 import styles from '../styles/movies.module.css'
+import MovieCard from '../src/components/atoms/MovieCard/MovieCard';
 
 const getMovies = async (page = 1, limit = 10) => {
   const options = {
@@ -29,13 +30,14 @@ function Movies(props) {
 
   return (
     <>
-      {moviesData?.results.map(movie => (
-        <div key={movie.uuid} >
-          <p>{movie.title}</p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={movie.image} alt={movie.title} />
-        </div>
-      ))}
+      <div className={styles.movieContainer}>
+
+        {moviesData?.results.map(movie => (
+          <div className={styles.movieCard} key={movie.uuid} >
+            <MovieCard title={movie.title} description={movie.description} image={movie.image} />
+          </div>
+        ))}
+      </div>
     </>
   )
 }
