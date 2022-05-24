@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, useScrollTrigger, Container, Slide } from 
 
 import Link from '../../atoms/Link/Link';
 import styles from "./Topbar.module.css";
+import DatePicker from '../DatePicker/DatePicker';
 
 
 function HideOnScroll(props) {
@@ -34,7 +35,6 @@ const Index = (props) => {
             </Typography>
             <div className={styles.sections}>
               <Link href="/movies" name="Movies" />
-              <Link href="/about" name="About" />
             </div>
           </Toolbar>
         </AppBar>

@@ -1,46 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
-import axios from "axios";
+import Router from 'next/router';
 
 import { useStore } from './index';
 import styles from '../styles/movies.module.css'
 import MovieCard from '../src/components/atoms/MovieCard/MovieCard';
-
-const getMovies = async (page = 1, limit = 10) => {
-  const options = {
-    method: 'GET',
-    url: 'https://movies-app1.p.rapidapi.com/api/movies',
-    params: { page, limit },
-    headers: {
-      'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com',
-      'X-RapidAPI-Key': '5dc4ed3d87msh08d1d466bf06a8cp1c7249jsn75feab6dd978'
-    }
-  };
-
-  const response = await axios.request(options)
-  return response.data
-}
+import getMovies from '../src/utility/getMovies';
+import DatePicker from '../src/components/molecules/DatePicker/DatePicker';
 
 function Movies(props) {
-  const { page, limit } = useStore()
+  const { page, limit, setSelectedMovieId, selectedMovieId } = useStore()
 
   const { data: moviesData, isLoading, isError } = useQuery(['movies', page, limit], () => getMovies(page, limit), {
     initialData: props.movies
   })
 
+  const handleClick = (movieId) => {
+    setSelectedMovieId(movieId)
+    Router.push(`/movie/${movieId}`)
+  }
+
   return (
     <>
       <div className={styles.movieContainer}>
-
         {moviesData?.results.map(movie => (
           <div className={styles.movieCard} key={movie.uuid} >
-            <MovieCard title={movie.title} description={movie.description} image={movie.image} />
+            <MovieCard title={movie.title} description={movie.description} image={movie.image} onClick={() => handleClick(movie._id)} />
           </div>
         ))}
       </div>
     </>
   )
 }
+
 export default Movies
 
 export async function getStaticProps() {
