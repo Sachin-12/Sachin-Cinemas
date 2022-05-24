@@ -43,6 +43,7 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
       setIsAlert(false)
       setSelectedSeats([])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
