@@ -2,7 +2,6 @@ import { WarningOutlined } from '@mui/icons-material'
 import { Button, Dialog as DialogLib, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import React from 'react'
 
-
 function Dialog({ isOpen, onClose, primaryActionText, title }) {
   return (
     <DialogLib open={isOpen}>
