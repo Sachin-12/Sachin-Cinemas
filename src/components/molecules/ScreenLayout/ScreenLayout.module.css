@@ -7,3 +7,9 @@
   height: 44px;
   width: 40px;
 }
+
+.bookingHelper {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}

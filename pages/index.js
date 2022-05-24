@@ -15,6 +15,7 @@ export const useStore = create(set => ({
   disabledSeats: [],
   selectedSeats: [],
   screenLayout: {}, // Determines the layout of the screen
+  bookingTimeExpired: false,
   setPage: (page) => set(() => ({ page })),
   setLimit: (limit) => set(() => ({ limit })),
   setDate: (date) => set(() => ({ date })),
@@ -26,6 +27,7 @@ export const useStore = create(set => ({
   setDisabledSeats: (disabledSeats) => set(() => ({ disabledSeats })),
   setSelectedSeats: (selectedSeats) => set(() => ({ selectedSeats })),
   setScreenLayout: (screenLayout) => set(() => ({ screenLayout })),
+  setBookingTimeExpired: (bookingTimeExpired) => set(() => ({ bookingTimeExpired })),
 }))
 
 function Index({ children }) {

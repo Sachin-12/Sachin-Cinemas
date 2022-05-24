@@ -1,0 +1,9 @@
+.timer {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}

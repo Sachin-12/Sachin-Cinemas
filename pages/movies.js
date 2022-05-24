@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
 import Router from 'next/router';
 
@@ -6,10 +6,9 @@ import { useStore } from './index';
 import styles from '../styles/movies.module.css'
 import MovieCard from '../src/components/atoms/MovieCard/MovieCard';
 import getMovies from '../src/utility/getMovies';
-import DatePicker from '../src/components/molecules/DatePicker/DatePicker';
 
 function Movies(props) {
-  const { page, limit, setSelectedMovieId, selectedMovieId } = useStore()
+  const { page, limit, setSelectedMovieId, } = useStore()
 
   const { data: moviesData, isLoading, isError } = useQuery(['movies', page, limit], () => getMovies(page, limit), {
     initialData: props.movies
