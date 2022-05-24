@@ -8,6 +8,7 @@ import ScreenLayout from '../../src/components/molecules/ScreenLayout/ScreenLayo
 import styles from '../../styles/movie/[id].module.css'
 import { useStore } from '..'
 import { Dialog } from "@mui/material"
+import ShowPayment from '../../src/components/organisms/showPayment/ShowPayment'
 
 function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column: 5 }], bookedSeats = [{ row: 2, column: 6 }, { row: 2, column: 7 }] }) {
 
@@ -44,33 +45,7 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
     }
   }, [])
 
-  const ShowPayment = () => {
-    return (<>
-      <Dialog open={showConfirmation} onClose={closePayment}>
-        <div className={styles.payment}>
-          <div className={styles.paymentHeading}>
-            <Typography variant='h2'>Payment</Typography>
-          </div>
-          <div >
-            <Typography variant='h6'>Total Amount : <span>Rs. {selectedSeats.length * 100}</span></Typography>
-            <Typography variant='h6'>Payment Mode : <span>Online</span></Typography>
-            <Typography variant='h6'>Payment Status : <span>Success</span></Typography>
 
-            <hr />
-            <div className={styles.bookedSeats}>
-              <Typography variant='h4'>Booked Seats </Typography>
-              {selectedSeats.map(seat => {
-                return <Typography key={`${seat.row}-${seat.column}`} variant='h6'>Row: {seat.row} - Column: {seat.column}</Typography>
-              })}
-            </div>
-          </div>
-          <div className={styles.paymentFooter}>
-            <Button variant='contained' color='primary' onClick={closePayment}>Close</Button>
-          </div>
-        </div>
-      </Dialog>
-    </>)
-  }
 
   return (
     <>
@@ -78,7 +53,7 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
         {showConfirmation ?
           <>
             <p>Enjoy the Movie!</p>
-            <ShowPayment />
+            <ShowPayment showConfirmation={showConfirmation} closePayment={closePayment} selectedSeats={selectedSeats} status={"Success"} mode={"Online"} />
           </> :
           <>
             <DatePicker />

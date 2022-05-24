@@ -1,0 +1,14 @@
+.payment {
+  padding: 16px;
+  background-color: antiquewhite;
+}
+
+.paymentHeading {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.bookedSeats {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
