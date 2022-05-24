@@ -9,7 +9,7 @@ export default function Seat({ isDisabled = false, onClick = () => { }, selected
   const isSelected = selectedSeats.some(seat => seat.row === row && seat.column === column)
 
   return (
-    <IconButton onClick={onClick} disabled={isDisabled} color={isSelected ? "primary" : "secondary"}>
+    <IconButton onClick={onClick} disabled={isDisabled} >
       <ChairIcon className={isSelected ? styles.selectedSeat : styles.availableSeat} />
     </IconButton>
   );
