@@ -27,7 +27,7 @@ export default function DatePicker() {
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
             // Allow from current date to next 10 days
-            shouldDisableDate={(date) => date > addDays(new Date(), 10) || date < new Date()}
+            shouldDisableDate={(date) => date > addDays(new Date(), 10) || addDays(date, 1) < new Date()}
           />
         </Stack>
       </LocalizationProvider>

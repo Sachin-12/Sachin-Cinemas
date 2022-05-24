@@ -1,0 +1,15 @@
+.availableSeat {
+  fill: burlywood;
+}
+
+.selectedSeat{
+  fill: blue;
+}
+
+.disabledSeat{
+  fill: grey
+}
+
+.filledSeat{
+  fill: red
+}

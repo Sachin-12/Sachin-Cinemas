@@ -14,6 +14,7 @@ export const useStore = create(set => ({
   selectedMovieId: null,
   disabledSeats: [],
   selectedSeats: [],
+  screenLayout: {}, // Determines the layout of the screen
   setPage: (page) => set(() => ({ page })),
   setLimit: (limit) => set(() => ({ limit })),
   setDate: (date) => set(() => ({ date })),
@@ -24,6 +25,7 @@ export const useStore = create(set => ({
   setSelectedMovieId: (selectedMovieId) => set(() => ({ selectedMovieId })),
   setDisabledSeats: (disabledSeats) => set(() => ({ disabledSeats })),
   setSelectedSeats: (selectedSeats) => set(() => ({ selectedSeats })),
+  setScreenLayout: (screenLayout) => set(() => ({ screenLayout })),
 }))
 
 function Index({ children }) {

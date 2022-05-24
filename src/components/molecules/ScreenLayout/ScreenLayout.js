@@ -8,19 +8,20 @@ function ScreenLayout({ rows, columns, disabledSeats }) {
   const { selectedSeats, setSelectedSeats } = useStore()
 
   const onClick = (row, column) => {
-    setSelectedSeats([...selectedSeats, { row, column }])
+    if (selectedSeats.some(seat => seat.row === row && seat.column === column)) {
+      setSelectedSeats(selectedSeats.filter(seat => seat.row !== row || seat.column !== column))
+    } else {
+      setSelectedSeats([...selectedSeats, { row, column }])
+    }
   }
 
-  useEffect(() => {
-    console.log(selectedSeats)
-  }, [selectedSeats])
   return (
     <>
       <div className={""}>
         {[...Array(columns)].map((_, column) => (
           <div key={`column-${column}`} className={style.row}>
             {[...Array(rows).keys()].map((_, row) => (
-              <Seat key={`row-${row}`} onClick={() => onClick(row, column)} />
+              <Seat row={row} column={column} selectedSeats={selectedSeats} key={`row-${row}`} onClick={() => onClick(row, column)} />
             ))}
           </div>
         ))}
