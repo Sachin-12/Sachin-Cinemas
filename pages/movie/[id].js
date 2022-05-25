@@ -7,7 +7,7 @@ import DatePicker from '../../src/components/molecules/DatePicker/DatePicker'
 import ScreenLayout from '../../src/components/molecules/ScreenLayout/ScreenLayout'
 import styles from '../../styles/movie/[id].module.css'
 import { useStore } from '..'
-import { Dialog } from "@mui/material"
+import Dialog from '../../src/components/atoms/Dialog/Dialog'
 import ShowPayment from '../../src/components/organisms/showPayment/ShowPayment'
 
 function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column: 5 }], bookedSeats = [{ row: 2, column: 6 }, { row: 2, column: 7 }] }) {
