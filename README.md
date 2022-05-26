@@ -8,6 +8,10 @@
 	  	  yarn dev
 	  ```
 	- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ## Demo UI Screen
+- <img width="1497" alt="image" src="https://user-images.githubusercontent.com/24960422/170443388-84fb16b1-3bb5-43ce-a478-615d03394757.png">
+- <img width="307" alt="image" src="https://user-images.githubusercontent.com/24960422/170443732-57e1ede4-2606-41f8-9136-486629993344.png">
+
 - ## Faster Page load
 	- Used `Static Site Generation` using **nextjs** for initial page load.
 	- The first page of the screen `/movies` loads much faster as the html is directly rendered from the server
