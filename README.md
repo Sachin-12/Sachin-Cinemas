@@ -32,6 +32,9 @@
   - This info can be fetched from the server and sent as props to this component which takes care of rendering the layout based on it.
   - Similar approach can be used for providing pricing information based on rows.
 
+- ## State Management
+  - Used zustand for global state management 
+
 - ## Testing
 	- Added jest setup
 	- Used react-testing-library for testing react components
