@@ -1,5 +1,5 @@
 import { Button, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 
 import Timer from '../../src/components/atoms/Timer/Timer'
@@ -10,13 +10,22 @@ import { useStore } from '..'
 import Dialog from '../../src/components/atoms/Dialog/Dialog'
 import ShowPayment from '../../src/components/organisms/showPayment/ShowPayment'
 
-function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column: 5 }], bookedSeats = [{ row: 2, column: 6 }, { row: 2, column: 7 }] }) {
+function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column: 5 }], bookedSeats = [{ row: 2, column: 6 }, { row: 2, column: 7 }], rowsPrice = [100, 110, 120 ,130, 140, 150, 160, 170, 180, 190] }) {
 
   const { setSelectedSeats, selectedSeats, bookingTimeExpired } = useStore();
   const [showConfirmation, setShowConfirmation] = React.useState(false);
   const [isAlert, setIsAlert] = React.useState(false)
+  const [totalPrice, setTotalPrice ] = useState(0)
   const layout = {
     columnSplit: [3, 9, 3], rowSplit: [3, 10, 2]
+  }
+
+  const calculateTotalPrice = () => {
+    debugger
+    return selectedSeats.reduce((acc, seat) => {
+      const price = rowsPrice[seat.row]
+      return acc + price
+    }, 0)
   }
 
   const onSubmit = () => {
@@ -26,6 +35,8 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
       Router.push('/movies')
     } else {
       setShowConfirmation(true)
+      console.log(calculateTotalPrice())
+      setTotalPrice(calculateTotalPrice())
     }
   }
 
@@ -54,7 +65,7 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
         {showConfirmation ?
           <>
             <p>Enjoy the Movie!</p>
-            <ShowPayment showConfirmation={showConfirmation} closePayment={closePayment} selectedSeats={selectedSeats} status={"Success"} mode={"Online"} />
+            <ShowPayment showConfirmation={showConfirmation} totalPrice={totalPrice} closePayment={closePayment} selectedSeats={selectedSeats} status={"Success"} mode={"Online"}/>
           </> :
           <>
             <DatePicker />

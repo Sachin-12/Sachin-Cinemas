@@ -1,7 +1,7 @@
 import { Button, Dialog, Typography } from "@mui/material"
 import styles from './ShowPayment.module.css'
 
-const ShowPayment = ({ showConfirmation, closePayment, selectedSeats, status, mode }) => {
+const ShowPayment = ({ showConfirmation, closePayment, selectedSeats, status, mode, totalPrice }) => {
   return (<>
     <Dialog open={showConfirmation} onClose={closePayment}>
       <div className={styles.payment}>
@@ -11,7 +11,7 @@ const ShowPayment = ({ showConfirmation, closePayment, selectedSeats, status, mo
           </Typography>
         </div>
         <div >
-          <Typography variant='h6'>Total Amount : <span>Rs. {selectedSeats.length * 100}</span></Typography>
+          <Typography variant='h6'>Total Amount : <span>Rs. {totalPrice}</span></Typography>
           <Typography variant='h6'>Payment Mode : <span>{mode}</span></Typography>
           <Typography variant='h6'>Payment Status : <span>{status}</span></Typography>
 
