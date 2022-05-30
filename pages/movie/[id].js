@@ -21,7 +21,6 @@ function BookMovie({ rows = 15, columns = 15, disabledSeats = [{ row: 1, column:
   }
 
   const calculateTotalPrice = () => {
-    debugger
     return selectedSeats.reduce((acc, seat) => {
       const price = rowsPrice[seat.row]
       return acc + price
